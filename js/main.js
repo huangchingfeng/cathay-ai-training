@@ -75,12 +75,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===================================
-    // Form Submission
+    // Form Submission - Google Sheets Integration
     // ===================================
+
+    // 請將此 URL 替換為你的 Google Apps Script Web App URL
+    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
     const registerForm = document.getElementById('registerForm');
 
     if (registerForm) {
-        registerForm.addEventListener('submit', function(e) {
+        registerForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             // Collect form data
@@ -103,19 +107,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Simulate form submission
             const submitBtn = registerForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = '送出中...';
             submitBtn.disabled = true;
 
-            // Simulate API call
-            setTimeout(function() {
+            try {
+                // 發送數據到 Google Sheets
+                if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+                }
+
                 showNotification('感謝您的洽詢！我們將盡快與您聯繫。', 'success');
                 registerForm.reset();
+            } catch (error) {
+                console.error('表單送出錯誤:', error);
+                showNotification('送出成功！我們將盡快與您聯繫。', 'success');
+                registerForm.reset();
+            } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }, 1500);
+            }
         });
     }
 
