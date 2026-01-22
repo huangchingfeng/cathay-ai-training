@@ -78,8 +78,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form Submission - Google Sheets Integration
     // ===================================
 
-    // 請將此 URL 替換為你的 Google Apps Script Web App URL
-    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+    // Google Apps Script Web App URL
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0418dVY34hYN50--EJMMxu91h9cCfWbdLqJBUQ5HOdK3aIze2uNuh77vrJSoRiPOHIA/exec';
 
     const registerForm = document.getElementById('registerForm');
 
