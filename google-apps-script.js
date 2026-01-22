@@ -6,7 +6,7 @@ function doPost(e) {
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     const data = JSON.parse(e.postData.contents);
 
-    // 寫入數據
+    // 寫入數據（新增課程名稱欄位）
     sheet.appendRow([
       new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
       data.name,
@@ -14,13 +14,15 @@ function doPost(e) {
       data.phone,
       data.email,
       data.participants,
-      data.message || ''
+      data.message || '',
+      data.course_name || '未指定課程'
     ]);
 
     // 發送 Email 通知（可選）
     const emailBody = `
 新的課程報名資料：
 
+課程名稱：${data.course_name || '未指定課程'}
 姓名：${data.name}
 公司/部門：${data.company}
 電話：${data.phone}
@@ -33,7 +35,7 @@ Email：${data.email}
 
     MailApp.sendEmail({
       to: 'nikeshoxmiles@gmail.com',
-      subject: '【國泰課程】新報名通知 - ' + data.company,
+      subject: '【' + (data.course_name || '課程') + '】新報名通知 - ' + data.company,
       body: emailBody
     });
 
