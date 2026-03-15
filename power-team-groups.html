@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>華豐分會 Power Team 分組圖</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0A1628;color:#fff;font-family:'Noto Sans TC',sans-serif;min-height:100vh;padding:20px;}
+h1{text-align:center;font-size:24px;margin:20px 0 6px;color:#00D4FF;}
+.subtitle{text-align:center;color:#889;font-size:14px;margin-bottom:10px;}
+.instruction{text-align:center;color:#556;font-size:12px;margin-bottom:24px;}
+svg{display:block;margin:0 auto;max-width:100%;}
+
+/* Tooltip */
+.tip{position:fixed;background:#0F1D32;border:1px solid #00D4FF44;border-radius:12px;padding:16px 20px;font-size:13px;line-height:1.8;color:#C7C7CC;pointer-events:none;opacity:0;transition:opacity .25s;z-index:100;max-width:340px;box-shadow:0 8px 32px rgba(0,0,0,.5);}
+.tip.show{opacity:1;}
+.tip h4{color:#00D4FF;font-size:15px;margin-bottom:4px;}
+.tip .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-right:4px;margin-bottom:4px;}
+
+/* 圖例 */
+.legend{display:flex;justify-content:center;gap:24px;margin-bottom:20px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#aab;}
+.legend-circle{width:14px;height:14px;border-radius:50%;opacity:.3;}
+</style>
+</head>
+<body>
+<h1>華豐分會 Power Team 分組圖</h1>
+<p class="subtitle">3 個潛在 Power Team ｜ 重疊 = 跨組核心成員</p>
+<p class="instruction">滑鼠移到人名或圈圈上查看詳細資訊</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-circle" style="background:#00D4FF;"></div>PT1 AI 品牌服務鏈</div>
+  <div class="legend-item"><div class="legend-circle" style="background:#8B5CF6;"></div>PT2 服務人資單位</div>
+  <div class="legend-item"><div class="legend-circle" style="background:#FBBF24;"></div>PT3 高資產客戶服務</div>
+</div>
+
+<svg viewBox="0 0 900 750" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="ng" cx="50%" cy="40%"><stop offset="0%" stop-color="#1a3050"/><stop offset="100%" stop-color="#0F1D32"/></radialGradient>
+  </defs>
+
+  <!-- === 三個大圈 === -->
+  <!-- PT1: AI 品牌服務鏈 (左上，最大) -->
+  <circle cx="350" cy="310" r="240" fill="none" stroke="#00D4FF" stroke-width="1.5" opacity=".15" class="pt-circle" data-pt="1"/>
+  <circle cx="350" cy="310" r="240" fill="#00D4FF" opacity=".03" class="pt-circle" data-pt="1"/>
+  <text x="180" y="110" fill="#00D4FF" font-size="14" font-weight="700" opacity=".6">PT1</text>
+  <text x="180" y="130" fill="#00D4FF" font-size="12" opacity=".4">AI 品牌服務鏈</text>
+
+  <!-- PT2: 服務人資單位 (右上) -->
+  <circle cx="580" cy="280" r="170" fill="none" stroke="#8B5CF6" stroke-width="1.5" opacity=".15" class="pt-circle" data-pt="2"/>
+  <circle cx="580" cy="280" r="170" fill="#8B5CF6" opacity=".03" class="pt-circle" data-pt="2"/>
+  <text x="680" y="140" fill="#8B5CF6" font-size="14" font-weight="700" opacity=".6">PT2</text>
+  <text x="680" y="160" fill="#8B5CF6" font-size="12" opacity=".4">服務人資單位</text>
+
+  <!-- PT3: 高資產客戶服務 (下方) -->
+  <circle cx="420" cy="520" r="190" fill="none" stroke="#FBBF24" stroke-width="1.5" opacity=".15" class="pt-circle" data-pt="3"/>
+  <circle cx="420" cy="520" r="190" fill="#FBBF24" opacity=".03" class="pt-circle" data-pt="3"/>
+  <text x="530" y="680" fill="#FBBF24" font-size="14" font-weight="700" opacity=".6">PT3</text>
+  <text x="530" y="700" fill="#FBBF24" font-size="12" opacity=".4">高資產客戶服務</text>
+
+  <!-- === 人物節點 === -->
+
+  <!-- 阿峰：三圈交集（核心中的核心）-->
+  <g class="person" data-name="阿峰" data-role="AI 企業培訓講師" data-pts="PT1 PT2 PT3" data-color="#00D4FF"
+     data-detail="PT1：提供 AI 培訓，串接品牌服務鏈的教學環節|PT2：手上有大量企業人資客戶名單，是 PT2 的客戶來源|PT3：服務國泰人壽等高階業務主管，可帶入高資產客戶">
+    <circle cx="460" cy="370" r="40" fill="url(#ng)" stroke="#00D4FF" stroke-width="3" filter="url(#glow)"/>
+    <circle cx="460" cy="370" r="40" fill="#00D4FF" opacity=".08"/>
+    <text x="460" y="365" text-anchor="middle" fill="#00D4FF" font-size="16" font-weight="700">阿峰</text>
+    <text x="460" y="385" text-anchor="middle" fill="#889" font-size="10">AI 培訓</text>
+    <!-- 三圈標記 -->
+    <circle cx="490" cy="340" r="8" fill="#00D4FF" opacity=".5"/><text x="490" y="344" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">3</text>
+  </g>
+
+  <!-- 寶拉：PT1 + PT3 交集 -->
+  <g class="person" data-name="寶拉" data-role="品牌顧問 / 活動公司" data-pts="PT1 PT3" data-color="#F472B6"
+     data-detail="PT1：品牌顧問角色，規劃 AI 品牌服務的包裝與推廣|PT3：手上有家族辦公室人脈，可引薦給 Juby；也有保險處經理可引薦給阿峰">
+    <circle cx="340" cy="480" r="36" fill="url(#ng)" stroke="#F472B6" stroke-width="2.5"/>
+    <text x="340" y="475" text-anchor="middle" fill="#F472B6" font-size="15" font-weight="700">寶拉</text>
+    <text x="340" y="495" text-anchor="middle" fill="#889" font-size="10">品牌顧問</text>
+    <circle cx="368" cy="452" r="8" fill="#F472B6" opacity=".5"/><text x="368" y="456" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">2</text>
+  </g>
+
+  <!-- Jordan：PT1 + PT2 交集 -->
+  <g class="person" data-name="Jordan" data-role="AI 工具開發" data-pts="PT1 PT2" data-color="#8B5CF6"
+     data-detail="PT1：開發 AI 工具（課程管理/志工管理 SaaS），是品牌服務鏈的產品端|PT2：課程管理工具直接服務人資單位的培訓需求">
+    <circle cx="490" cy="230" r="36" fill="url(#ng)" stroke="#8B5CF6" stroke-width="2.5"/>
+    <text x="490" y="225" text-anchor="middle" fill="#8B5CF6" font-size="15" font-weight="700">Jordan</text>
+    <text x="490" y="245" text-anchor="middle" fill="#889" font-size="10">AI 工具</text>
+    <circle cx="518" cy="202" r="8" fill="#8B5CF6" opacity=".5"/><text x="518" y="206" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">2</text>
+  </g>
+
+  <!-- Ray：只在 PT1 -->
+  <g class="person" data-name="Ray" data-role="SEO 專家" data-pts="PT1" data-color="#60A5FA"
+     data-detail="PT1：提供 SEO 技術，讓 AI 品牌服務鏈的客戶在搜尋引擎被看到|可拓展：幫 PT3 高資產服務的官網做 SEO，但目前尚未串接">
+    <circle cx="220" cy="310" r="36" fill="url(#ng)" stroke="#60A5FA" stroke-width="2"/>
+    <text x="220" y="305" text-anchor="middle" fill="#60A5FA" font-size="15" font-weight="700">Ray</text>
+    <text x="220" y="325" text-anchor="middle" fill="#889" font-size="10">SEO</text>
+    <circle cx="248" cy="282" r="8" fill="#60A5FA" opacity=".5"/><text x="248" y="286" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">1</text>
+  </g>
+
+  <!-- Teresa：只在 PT1 -->
+  <g class="person" data-name="Teresa" data-role="睡眠療癒" data-pts="PT1" data-color="#34D399"
+     data-detail="PT1：AI 數字人 + 睡眠療癒，可做企業 ESG 員工身心健康服務|可拓展：企業 ESG 服務串接 PT2 人資端，但目前尚未正式加入">
+    <circle cx="260" cy="430" r="36" fill="url(#ng)" stroke="#34D399" stroke-width="2"/>
+    <text x="260" y="425" text-anchor="middle" fill="#34D399" font-size="15" font-weight="700">Teresa</text>
+    <text x="260" y="445" text-anchor="middle" fill="#889" font-size="10">睡眠療癒</text>
+    <circle cx="288" cy="402" r="8" fill="#34D399" opacity=".5"/><text x="288" y="406" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">1</text>
+  </g>
+
+  <!-- Juby：只在 PT3 -->
+  <g class="person" data-name="Juby" data-role="不動產 / 房貸" data-pts="PT3" data-color="#FBBF24"
+     data-detail="PT3：不動產活化 + 家族辦公室，直接服務高資產客戶的資產傳承|最需要：代書（外部邀約）來串接遺產稅/贈與稅服務">
+    <circle cx="500" cy="550" r="36" fill="url(#ng)" stroke="#FBBF24" stroke-width="2"/>
+    <text x="500" y="545" text-anchor="middle" fill="#FBBF24" font-size="15" font-weight="700">Juby</text>
+    <text x="500" y="565" text-anchor="middle" fill="#889" font-size="10">不動產</text>
+    <circle cx="528" cy="522" r="8" fill="#FBBF24" opacity=".5"/><text x="528" y="526" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">1</text>
+  </g>
+
+  <!-- === 外部需求（虛線框）=== -->
+  <g opacity=".5">
+    <rect x="600" cy="550" y="530" width="140" height="50" rx="12" fill="#1a2a40" stroke="#FBBF24" stroke-width="1" stroke-dasharray="5 3"/>
+    <text x="670" y="552" text-anchor="middle" fill="#FBBF24" font-size="11" font-weight="500">需外部邀約</text>
+    <text x="670" y="570" text-anchor="middle" fill="#FBBF24" font-size="13" font-weight="700">代書（地政士）</text>
+  </g>
+  <line x1="536" y1="550" x2="600" y2="555" stroke="#FBBF24" stroke-width="1" stroke-dasharray="4 3" opacity=".3"/>
+
+  <g opacity=".5">
+    <rect x="630" y="210" width="160" height="50" rx="12" fill="#1a2a40" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="5 3"/>
+    <text x="710" y="232" text-anchor="middle" fill="#8B5CF6" font-size="11" font-weight="500">需外部邀約</text>
+    <text x="710" y="250" text-anchor="middle" fill="#8B5CF6" font-size="13" font-weight="700">業務人才（銷售）</text>
+  </g>
+  <line x1="526" y1="230" x2="630" y2="235" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="4 3" opacity=".3"/>
+
+  <g opacity=".5">
+    <rect x="80" y="480" width="140" height="50" rx="12" fill="#1a2a40" stroke="#34D399" stroke-width="1" stroke-dasharray="5 3"/>
+    <text x="150" y="502" text-anchor="middle" fill="#34D399" font-size="11" font-weight="500">需外部邀約</text>
+    <text x="150" y="520" text-anchor="middle" fill="#34D399" font-size="13" font-weight="700">療癒產品供應商</text>
+  </g>
+  <line x1="224" y1="440" x2="160" y2="480" stroke="#34D399" stroke-width="1" stroke-dasharray="4 3" opacity=".3"/>
+
+  <!-- === PT 標籤説明框 === -->
+  <!-- PT1 詳情 -->
+  <g class="pt-info" data-pt="1">
+    <rect x="60" y="140" width="200" height="120" rx="10" fill="#0F1D32" stroke="#00D4FF" stroke-width="1" opacity=".7"/>
+    <text x="80" y="165" fill="#00D4FF" font-size="13" font-weight="700">PT1 AI 品牌服務鏈</text>
+    <text x="80" y="185" fill="#889" font-size="11">品牌規劃 → AI 培訓</text>
+    <text x="80" y="203" fill="#889" font-size="11">→ AI 工具導入 → SEO 曝光</text>
+    <text x="80" y="221" fill="#889" font-size="11">→ 活動推廣 → 企業服務</text>
+    <text x="80" y="245" fill="#556" font-size="10">成員：阿峰+寶拉+Ray+Teresa+Jordan</text>
+  </g>
+
+  <!-- PT2 詳情 -->
+  <g class="pt-info" data-pt="2">
+    <rect x="650" y="300" width="200" height="100" rx="10" fill="#0F1D32" stroke="#8B5CF6" stroke-width="1" opacity=".7"/>
+    <text x="670" y="325" fill="#8B5CF6" font-size="13" font-weight="700">PT2 服務人資單位</text>
+    <text x="670" y="345" fill="#889" font-size="11">阿峰上課 → Jordan 工具</text>
+    <text x="670" y="363" fill="#889" font-size="11">管理學習成效 → 訂閱制</text>
+    <text x="670" y="387" fill="#556" font-size="10">成員：阿峰+Jordan（+外部講師）</text>
+  </g>
+
+  <!-- PT3 詳情 -->
+  <g class="pt-info" data-pt="3">
+    <rect x="260" y="630" width="220" height="100" rx="10" fill="#0F1D32" stroke="#FBBF24" stroke-width="1" opacity=".7"/>
+    <text x="280" y="655" fill="#FBBF24" font-size="13" font-weight="700">PT3 高資產客戶服務</text>
+    <text x="280" y="675" fill="#889" font-size="11">不動產活化 → 家族傳承</text>
+    <text x="280" y="693" fill="#889" font-size="11">→ 品牌顧問 → AI 理財工具</text>
+    <text x="280" y="717" fill="#556" font-size="10">成員：Juby+寶拉+阿峰（+代書）</text>
+  </g>
+
+</svg>
+
+<div class="tip" id="tip"></div>
+
+<script>
+const tip = document.getElementById('tip');
+
+document.querySelectorAll('.person').forEach(p => {
+  p.style.cursor = 'pointer';
+  p.addEventListener('mouseenter', function(e) {
+    const name = this.dataset.name;
+    const role = this.dataset.role;
+    const pts = this.dataset.pts;
+    const detail = this.dataset.detail.split('|');
+    const color = this.dataset.color;
+
+    const ptColors = {'PT1':'#00D4FF','PT2':'#8B5CF6','PT3':'#FBBF24'};
+    const ptNames = {'PT1':'AI品牌服務鏈','PT2':'服務人資','PT3':'高資產客戶'};
+    const tags = pts.split(' ').map(pt =>
+      `<span class="tag" style="background:${ptColors[pt]}22;color:${ptColors[pt]};border:1px solid ${ptColors[pt]}44">${ptNames[pt]}</span>`
+    ).join('');
+
+    tip.innerHTML = `<h4 style="color:${color}">${name}</h4><b>${role}</b><br>${tags}<br><br>${detail.map(d => '- ' + d.trim()).join('<br>')}`;
+    tip.classList.add('show');
+
+    // 高亮對應的圈
+    this.querySelector('circle').setAttribute('r', parseInt(this.querySelector('circle').getAttribute('r')) + 4);
+  });
+  p.addEventListener('mouseleave', function() {
+    tip.classList.remove('show');
+    const isMain = this.dataset.name === '阿峰';
+    this.querySelector('circle').setAttribute('r', isMain ? 40 : 36);
+  });
+  p.addEventListener('mousemove', function(e) {
+    tip.style.left = Math.min(e.clientX + 16, window.innerWidth - 360) + 'px';
+    tip.style.top = (e.clientY - 10) + 'px';
+  });
+  // 手機
+  p.addEventListener('click', function(e) {
+    const name = this.dataset.name;
+    const role = this.dataset.role;
+    const detail = this.dataset.detail.split('|');
+    const color = this.dataset.color;
+    tip.innerHTML = `<h4 style="color:${color}">${name}</h4><b>${role}</b><br><br>${detail.map(d => '- ' + d.trim()).join('<br>')}`;
+    tip.style.left = '50%'; tip.style.top = '50%'; tip.style.transform = 'translate(-50%,-50%)';
+    tip.classList.add('show');
+    setTimeout(() => { tip.classList.remove('show'); tip.style.transform = ''; }, 4000);
+  });
+});
+</script>
+</body>
+</html>
