@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>華豐分會領導團隊 — 合作配對圖</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0A1628;color:#fff;font-family:'Noto Sans TC',sans-serif;min-height:100vh;padding:20px;}
+h1{text-align:center;font-size:24px;margin:20px 0 8px;color:#00D4FF;}
+.subtitle{text-align:center;color:#889;font-size:14px;margin-bottom:30px;}
+.legend{display:flex;justify-content:center;gap:20px;margin-bottom:24px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#aab;}
+.legend-dot{width:12px;height:3px;border-radius:2px;}
+
+svg{display:block;margin:0 auto;max-width:100%;}
+
+/* Tooltip */
+.tooltip{position:fixed;background:#0F1D32;border:1px solid #00D4FF33;border-radius:10px;padding:14px 18px;font-size:13px;line-height:1.7;color:#C7C7CC;pointer-events:none;opacity:0;transition:opacity .2s;z-index:100;max-width:320px;box-shadow:0 8px 32px rgba(0,0,0,.5);}
+.tooltip.show{opacity:1;}
+.tooltip h4{color:#00D4FF;font-size:14px;margin-bottom:6px;}
+.tooltip .priority-high{color:#FF6B35;}
+.tooltip .priority-mid{color:#FFD700;}
+</style>
+</head>
+<body>
+<h1>華豐分會領導團隊 — 合作配對圖</h1>
+<p class="subtitle">2026-03-14 會議整理 ｜ 點擊連線查看合作內容</p>
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#FF6B35;"></div>高優先合作</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#FFD700;"></div>中優先合作</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#00D4FF44;"></div>潛在合作</div>
+</div>
+
+<svg viewBox="0 0 800 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="nodeGrad" cx="50%" cy="40%"><stop offset="0%" stop-color="#1a3050"/><stop offset="100%" stop-color="#0F1D32"/></radialGradient>
+  </defs>
+
+  <!-- 連線 -->
+  <!-- 高優先 (橘色) -->
+  <line x1="400" y1="140" x2="580" y2="340" stroke="#FF6B35" stroke-width="2.5" opacity="0.8" class="link" data-from="阿峰" data-to="寶拉" data-info="寶拉引薦保險處經理→阿峰上 AI 課｜共組 AI 品牌服務產業鏈" data-priority="high"/>
+  <line x1="400" y1="140" x2="220" y2="340" stroke="#FF6B35" stroke-width="2.5" opacity="0.8" class="link" data-from="阿峰" data-to="Jordan" data-info="Jordan 的 AI 工具搭阿峰的培訓｜阿峰的人資客戶用 Jordan 的課程管理工具" data-priority="high"/>
+  <line x1="580" y1="340" x2="650" y2="540" stroke="#FF6B35" stroke-width="2.5" opacity="0.8" class="link" data-from="寶拉" data-to="Ray" data-info="新聞稿 × SEO 整合服務｜寶拉的品牌客戶 + Ray 的搜尋排名" data-priority="high"/>
+  <line x1="580" y1="340" x2="400" y2="560" stroke="#FF6B35" stroke-width="2.5" opacity="0.8" class="link" data-from="寶拉" data-to="Juby" data-info="寶拉引薦家族辦公室人脈→Juby 的不動產傳承規劃" data-priority="high"/>
+
+  <!-- 中優先 (金色) -->
+  <line x1="400" y1="140" x2="650" y2="540" stroke="#FFD700" stroke-width="1.8" opacity="0.5" class="link" data-from="阿峰" data-to="Ray" data-info="Ray 幫 autolab.cloud 做 SEO 健檢｜阿峰的企業客戶可能需要 SEO" data-priority="mid"/>
+  <line x1="400" y1="140" x2="150" y2="540" stroke="#FFD700" stroke-width="1.8" opacity="0.5" class="link" data-from="阿峰" data-to="Teresa" data-info="Teresa 企業睡眠服務 bundle 阿峰 AI 培訓（ESG 打包）" data-priority="mid"/>
+  <line x1="650" y1="540" x2="150" y2="540" stroke="#FFD700" stroke-width="1.8" opacity="0.5" class="link" data-from="Ray" data-to="Teresa" data-info="Ray 幫睡眠商城/活動網站做 SEO 排名" data-priority="mid"/>
+  <line x1="650" y1="540" x2="220" y2="340" stroke="#FFD700" stroke-width="1.8" opacity="0.5" class="link" data-from="Ray" data-to="Jordan" data-info="Ray 幫 Jordan 的 SaaS 工具做 SEO 架構優化" data-priority="mid"/>
+  <line x1="580" y1="340" x2="150" y2="540" stroke="#FFD700" stroke-width="1.8" opacity="0.5" class="link" data-from="寶拉" data-to="Teresa" data-info="活動合作 + 睡眠療癒商城 × 品牌顧問" data-priority="mid"/>
+
+  <!-- 潛在 (淡藍虛線) -->
+  <line x1="150" y1="540" x2="400" y2="560" stroke="#00D4FF" stroke-width="1" opacity="0.25" stroke-dasharray="6 4" class="link" data-from="Teresa" data-to="Juby" data-info="Teresa 的高資產客戶睡眠服務 × Juby 的不動產客戶" data-priority="low"/>
+  <line x1="220" y1="340" x2="400" y2="560" stroke="#00D4FF" stroke-width="1" opacity="0.25" stroke-dasharray="6 4" class="link" data-from="Jordan" data-to="Juby" data-info="Jordan 的 AI 平台幫 Juby 做不動產客戶管理工具" data-priority="low"/>
+
+  <!-- 節點 -->
+  <!-- 阿峰 (頂部中央，最大) -->
+  <g class="node" data-name="阿峰" data-role="AI 企業培訓講師" data-detail="手上有：人資部門客戶、業務單位客戶（經理級）、日本 BNI 連結｜想找：服務人資的人、服務業務的人、手上有客戶的人">
+    <circle cx="400" cy="140" r="52" fill="url(#nodeGrad)" stroke="#00D4FF" stroke-width="2.5" filter="url(#glow)"/>
+    <text x="400" y="134" text-anchor="middle" fill="#00D4FF" font-size="18" font-weight="700">阿峰</text>
+    <text x="400" y="154" text-anchor="middle" fill="#889" font-size="11">AI 培訓講師</text>
+  </g>
+
+  <!-- Jordan (左) -->
+  <g class="node" data-name="Jordan 教授" data-role="AI 工具開發" data-detail="做：課程管理模組、志工管理平台（SaaS 訂閱制）｜想找：業務人才把工具賣出去、服務培訓單位的通路">
+    <circle cx="220" cy="340" r="44" fill="url(#nodeGrad)" stroke="#8B5CF6" stroke-width="2"/>
+    <text x="220" y="334" text-anchor="middle" fill="#8B5CF6" font-size="15" font-weight="700">Jordan</text>
+    <text x="220" y="354" text-anchor="middle" fill="#889" font-size="10">AI 工具開發</text>
+  </g>
+
+  <!-- 寶拉 (右) -->
+  <g class="node" data-name="寶拉" data-role="活動公司 / 品牌顧問" data-detail="做：活動公司 + 品牌顧問 + 美容業客戶｜想找：活動公司、品牌顧問、組 AI 品牌服務鏈｜可引薦：保險處經理→阿峰、家族辦公室→Juby">
+    <circle cx="580" cy="340" r="44" fill="url(#nodeGrad)" stroke="#F472B6" stroke-width="2"/>
+    <text x="580" y="334" text-anchor="middle" fill="#F472B6" font-size="15" font-weight="700">寶拉</text>
+    <text x="580" y="354" text-anchor="middle" fill="#889" font-size="10">品牌顧問/活動</text>
+  </g>
+
+  <!-- Teresa (左下) -->
+  <g class="node" data-name="Teresa" data-role="睡眠療癒 / AI 數字人" data-detail="做：睡眠 × 無感療癒 × AI、搭商城、企業 ESG 服務｜想找：睡眠療癒產品供應商（香氛/蠟燭）、企業 ESG 合作">
+    <circle cx="150" cy="540" r="44" fill="url(#nodeGrad)" stroke="#34D399" stroke-width="2"/>
+    <text x="150" y="534" text-anchor="middle" fill="#34D399" font-size="15" font-weight="700">Teresa</text>
+    <text x="150" y="554" text-anchor="middle" fill="#889" font-size="10">睡眠療癒</text>
+  </g>
+
+  <!-- Juby (中下) -->
+  <g class="node" data-name="Juby" data-role="不動產金融 / 房貸" data-detail="做：不動產活化、以房養老、建案房貸、家族辦公室（遺產稅/贈與稅）｜最需要：代書（地政士）、建商、不動產代銷">
+    <circle cx="400" cy="560" r="44" fill="url(#nodeGrad)" stroke="#FBBF24" stroke-width="2"/>
+    <text x="400" y="554" text-anchor="middle" fill="#FBBF24" font-size="15" font-weight="700">Juby</text>
+    <text x="400" y="574" text-anchor="middle" fill="#889" font-size="10">不動產/房貸</text>
+  </g>
+
+  <!-- Ray (右下) -->
+  <g class="node" data-name="Ray" data-role="SEO 專家" data-detail="做：一條龍 SEO（年約月費 3 萬）、今年要加盟模組化｜適合客戶：高單價傳產（豪宅/醫美/室內設計）、ESG 報告｜可提供：免費幫大家做網站 SEO 健檢">
+    <circle cx="650" cy="540" r="44" fill="url(#nodeGrad)" stroke="#60A5FA" stroke-width="2"/>
+    <text x="650" y="534" text-anchor="middle" fill="#60A5FA" font-size="15" font-weight="700">Ray</text>
+    <text x="650" y="554" text-anchor="middle" fill="#889" font-size="10">SEO 專家</text>
+  </g>
+
+  <!-- 外部需求標註 -->
+  <!-- Juby 需要代書 -->
+  <g opacity="0.6">
+    <rect x="330" y="630" width="140" height="28" rx="14" fill="#1a2a40" stroke="#FBBF24" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="400" y="649" text-anchor="middle" fill="#FBBF24" font-size="11">需外部邀約：代書</text>
+  </g>
+  <!-- Teresa 需要產品供應商 -->
+  <g opacity="0.6">
+    <rect x="30" y="610" width="180" height="28" rx="14" fill="#1a2a40" stroke="#34D399" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="120" y="629" text-anchor="middle" fill="#34D399" font-size="11">需外部邀約：療癒產品供應商</text>
+  </g>
+  <!-- Jordan 需要業務人才 -->
+  <g opacity="0.6">
+    <rect x="120" y="260" width="160" height="28" rx="14" fill="#1a2a40" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="200" y="279" text-anchor="middle" fill="#8B5CF6" font-size="11">需外部邀約：業務人才</text>
+  </g>
+</svg>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const tooltip = document.getElementById('tooltip');
+
+// 連線互動
+document.querySelectorAll('.link').forEach(link => {
+  link.style.cursor = 'pointer';
+  link.addEventListener('mouseenter', function(e) {
+    const from = this.dataset.from;
+    const to = this.dataset.to;
+    const info = this.dataset.info.split('｜');
+    const priority = this.dataset.priority;
+    const pClass = priority === 'high' ? 'priority-high' : priority === 'mid' ? 'priority-mid' : '';
+    const pLabel = priority === 'high' ? '高優先' : priority === 'mid' ? '中優先' : '潛在';
+
+    tooltip.innerHTML = `<h4>${from} × ${to}</h4><span class="${pClass}">${pLabel}</span><br>${info.map(i => '- ' + i.trim()).join('<br>')}`;
+    tooltip.classList.add('show');
+    this.setAttribute('opacity', '1');
+    this.setAttribute('stroke-width', parseFloat(this.getAttribute('stroke-width')) + 1.5);
+  });
+  link.addEventListener('mouseleave', function() {
+    tooltip.classList.remove('show');
+    const p = this.dataset.priority;
+    this.setAttribute('opacity', p === 'high' ? '0.8' : p === 'mid' ? '0.5' : '0.25');
+    this.setAttribute('stroke-width', p === 'high' ? '2.5' : p === 'mid' ? '1.8' : '1');
+  });
+  link.addEventListener('mousemove', function(e) {
+    tooltip.style.left = Math.min(e.clientX + 16, window.innerWidth - 340) + 'px';
+    tooltip.style.top = (e.clientY - 10) + 'px';
+  });
+  // 手機 touch
+  link.addEventListener('click', function(e) {
+    const from = this.dataset.from;
+    const to = this.dataset.to;
+    const info = this.dataset.info.split('｜');
+    const priority = this.dataset.priority;
+    const pLabel = priority === 'high' ? '高優先' : priority === 'mid' ? '中優先' : '潛在';
+    tooltip.innerHTML = `<h4>${from} × ${to}</h4><b>${pLabel}</b><br>${info.map(i => '- ' + i.trim()).join('<br>')}`;
+    tooltip.style.left = '50%';
+    tooltip.style.top = '50%';
+    tooltip.style.transform = 'translate(-50%,-50%)';
+    tooltip.classList.add('show');
+    setTimeout(() => { tooltip.classList.remove('show'); tooltip.style.transform = ''; }, 3000);
+  });
+});
+
+// 節點互動
+document.querySelectorAll('.node').forEach(node => {
+  node.style.cursor = 'pointer';
+  node.addEventListener('mouseenter', function(e) {
+    const name = this.dataset.name;
+    const role = this.dataset.role;
+    const detail = this.dataset.detail.split('｜');
+    tooltip.innerHTML = `<h4>${name}</h4><b>${role}</b><br>${detail.map(i => '- ' + i.trim()).join('<br>')}`;
+    tooltip.classList.add('show');
+    this.querySelector('circle').setAttribute('r', parseInt(this.querySelector('circle').getAttribute('r')) + 4);
+  });
+  node.addEventListener('mouseleave', function() {
+    tooltip.classList.remove('show');
+    const isMain = this.dataset.name === '阿峰';
+    this.querySelector('circle').setAttribute('r', isMain ? 52 : 44);
+  });
+  node.addEventListener('mousemove', function(e) {
+    tooltip.style.left = Math.min(e.clientX + 16, window.innerWidth - 340) + 'px';
+    tooltip.style.top = (e.clientY - 10) + 'px';
+  });
+});
+</script>
+</body>
+</html>
