@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>AI 工具應用與簡報製作 | 國泰人壽 課後複習</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* === Cathay Life Brand Colors === */
+:root{
+  --green:#006848;--green-light:#008C5E;--green-dark:#004D35;
+  --gold:#C8A951;--gold-light:#D4BB6E;--gold-dark:#A88B3A;
+  --bg:#FFFFFF;--bg-alt:#F5F7FA;--bg-card:#FFFFFF;
+  --text:#1A1A1A;--text-sec:#555555;--text-light:#888888;
+  --border:#E5E8EB;--border-light:#F0F2F5;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:72px;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC','Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7;}
+a{color:var(--green);text-decoration:none;transition:color .2s;}
+a:hover{color:var(--green-light);}
+.container{max-width:960px;margin:0 auto;padding:0 24px;}
+.green{color:var(--green);}
+.gold{color:var(--gold-dark);}
+
+/* === Nav === */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.nav-inner{display:flex;align-items:center;gap:6px;padding:10px 24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:960px;margin:0 auto;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-logo{font-weight:800;font-size:14px;color:var(--green);white-space:nowrap;margin-right:12px;flex-shrink:0;letter-spacing:.5px;}
+.nav-item{white-space:nowrap;padding:6px 14px;border-radius:20px;background:transparent;color:var(--text-sec);font-size:13px;border:1px solid transparent;transition:all .25s;flex-shrink:0;cursor:pointer;}
+.nav-item:hover,.nav-item.active{background:rgba(0,104,72,0.08);color:var(--green);border-color:rgba(0,104,72,0.15);}
+
+/* === Hero === */
+.hero{padding:72px 24px 56px;text-align:center;background:linear-gradient(180deg,#F0F8F5 0%,#FFFFFF 100%);position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:24px;background:rgba(0,104,72,0.08);border:1px solid rgba(0,104,72,0.12);font-size:13px;color:var(--green);margin-bottom:20px;font-weight:600;}
+.hero h1{font-size:38px;font-weight:900;color:var(--text);line-height:1.3;margin-bottom:14px;}
+.hero h1 .hl{color:var(--green);}
+.hero-sub{font-size:17px;color:var(--text-sec);margin-bottom:28px;}
+.hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:28px;}
+.stat{text-align:center;}
+.stat-num{font-size:36px;font-weight:800;color:var(--green);display:block;font-family:'Inter','Noto Sans TC',sans-serif;}
+.stat-label{font-size:13px;color:var(--text-light);}
+.hero-meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--text-sec);}
+.hero-meta span{display:flex;align-items:center;gap:6px;}
+
+/* === Section === */
+.section{padding:56px 0;}
+.section:nth-child(odd){background:var(--bg-alt);}
+.section-header{margin-bottom:28px;}
+.section-badge{display:inline-block;padding:4px 12px;border-radius:10px;font-size:12px;font-weight:700;margin-bottom:10px;letter-spacing:.5px;}
+.section-badge.hour{background:rgba(0,104,72,0.08);color:var(--green);}
+.section-badge.tools{background:rgba(200,169,81,0.12);color:var(--gold-dark);}
+.section-badge.teacher{background:rgba(0,104,72,0.08);color:var(--green);}
+.section h2{font-size:26px;font-weight:800;color:var(--text);margin-bottom:6px;}
+.section-desc{font-size:15px;color:var(--text-sec);}
+.divider{height:1px;background:var(--border-light);margin:0;}
+
+/* === Cards === */
+.card{background:var(--bg-card);border-radius:14px;border:1px solid var(--border);padding:24px;margin-bottom:14px;transition:all .3s;box-shadow:0 1px 3px rgba(0,0,0,0.03);}
+.card:hover{border-color:rgba(0,104,72,0.2);box-shadow:0 4px 16px rgba(0,104,72,0.06);}
+.card h3{font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.card h3 .icon{font-size:22px;}
+.card ul{list-style:none;padding:0;}
+.card li{padding:5px 0;padding-left:18px;position:relative;font-size:14px;line-height:1.8;color:var(--text);}
+.card li::before{content:'';position:absolute;left:0;top:14px;width:6px;height:6px;border-radius:50%;background:var(--green);}
+.card li.gold-dot::before{background:var(--gold);}
+.card li strong{color:var(--text);}
+
+/* === Quote === */
+.quote-card{background:var(--bg-alt);border-left:3px solid var(--gold);padding:16px 20px;border-radius:0 10px 10px 0;margin:8px 0;font-size:15px;color:var(--text);line-height:1.8;font-style:italic;}
+
+/* === Tool Grid === */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.tool-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;transition:all .3s;cursor:pointer;text-decoration:none;display:block;}
+.tool-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,104,72,0.08);}
+.tool-card .tool-icon{font-size:32px;margin-bottom:10px;display:block;}
+.tool-card .tool-name{font-size:15px;font-weight:700;color:var(--text);display:block;margin-bottom:4px;}
+.tool-card .tool-desc{font-size:12px;color:var(--text-light);}
+.tool-card .tool-tag{display:inline-block;padding:2px 8px;border-radius:8px;font-size:11px;margin-top:8px;background:rgba(0,104,72,0.08);color:var(--green);font-weight:600;}
+.tool-card .tool-tag.paid{background:rgba(200,169,81,0.12);color:var(--gold-dark);}
+
+/* === Collapsible === */
+.collapsible{cursor:pointer;user-select:none;}
+.collapsible::after{content:'';display:inline-block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--text-light);margin-left:10px;transition:transform .3s;vertical-align:middle;}
+.collapsible.open::after{transform:rotate(180deg);}
+.collapse-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.collapse-body.open{max-height:5000px;}
+
+/* === Steps === */
+.steps{counter-reset:step;}
+.step{counter-increment:step;padding:10px 10px 10px 48px;position:relative;font-size:14px;line-height:1.8;}
+.step::before{content:counter(step);position:absolute;left:0;top:10px;width:32px;height:32px;border-radius:50%;background:rgba(0,104,72,0.08);color:var(--green);font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;}
+
+/* === Slide Embed === */
+.slide-embed{background:var(--bg-card);border-radius:14px;border:1px solid var(--border);padding:24px;text-align:center;}
+.slide-embed .placeholder{padding:40px;color:var(--text-light);font-size:14px;}
+
+/* === Teacher === */
+.teacher-card{display:grid;grid-template-columns:1fr 2fr;gap:32px;background:var(--bg-card);border-radius:14px;border:1px solid var(--border);padding:32px;align-items:start;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.teacher-avatar{text-align:center;}
+.teacher-avatar .avatar-circle{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-light));display:flex;align-items:center;justify-content:center;font-size:48px;margin:0 auto 12px;color:#fff;font-weight:900;}
+.teacher-avatar .name{font-size:20px;font-weight:700;color:var(--text);}
+.teacher-avatar .title{font-size:13px;color:var(--text-light);margin-top:4px;}
+.teacher-info h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:12px;}
+.teacher-info p{font-size:14px;line-height:1.8;margin-bottom:12px;color:var(--text-sec);}
+.teacher-stats{display:flex;gap:16px;margin:16px 0;flex-wrap:wrap;}
+.teacher-stat{text-align:center;padding:12px 20px;background:rgba(0,104,72,0.04);border-radius:12px;border:1px solid rgba(0,104,72,0.1);}
+.teacher-stat .num{font-size:24px;font-weight:800;color:var(--green);display:block;font-family:'Inter',sans-serif;}
+.teacher-stat .label{font-size:12px;color:var(--text-light);}
+.teacher-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.teacher-link{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;background:rgba(0,104,72,0.06);border:1px solid rgba(0,104,72,0.12);font-size:13px;color:var(--green);transition:all .25s;font-weight:500;}
+.teacher-link:hover{background:var(--green);color:#fff;}
+
+/* === CTA === */
+.cta{text-align:center;padding:56px 24px;background:linear-gradient(180deg,#FFFFFF,#F0F8F5);}
+.cta h2{font-size:26px;font-weight:800;color:var(--text);margin-bottom:12px;}
+.cta p{font-size:15px;color:var(--text-sec);margin-bottom:24px;max-width:520px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:12px;background:var(--green);color:#fff;font-size:16px;font-weight:700;transition:all .3s;border:none;cursor:pointer;text-decoration:none;}
+.cta-btn:hover{background:var(--green-light);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,104,72,0.2);color:#fff;}
+.cta-btn.secondary{background:transparent;border:2px solid var(--gold);color:var(--gold-dark);margin-left:12px;}
+.cta-btn.secondary:hover{background:var(--gold);color:#fff;}
+
+/* === Footer === */
+.footer{text-align:center;padding:32px 24px;color:var(--text-light);font-size:12px;border-top:1px solid var(--border);}
+.footer a{color:var(--text-sec);}
+
+/* === Back to Top === */
+.back-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--green);border:none;color:#fff;font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:90;transition:all .3s;box-shadow:0 4px 16px rgba(0,104,72,0.2);}
+.back-top:hover{background:var(--green-light);}
+.back-top.visible{display:flex;}
+
+/* === Mobile === */
+@media(max-width:768px){
+  .hero h1{font-size:26px;}
+  .hero-stats{gap:20px;}
+  .stat-num{font-size:28px;}
+  .section h2{font-size:21px;}
+  .teacher-card{grid-template-columns:1fr;text-align:center;}
+  .teacher-info{text-align:left;}
+  .teacher-stats{justify-content:center;}
+  .tool-grid{grid-template-columns:repeat(2,1fr);}
+  .hero-meta{flex-direction:column;align-items:center;gap:8px;}
+  .cta-btn.secondary{margin-left:0;margin-top:12px;}
+}
+@media(max-width:480px){
+  .tool-grid{grid-template-columns:1fr;}
+  .nav-logo{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-logo">CATHAY LIFE</span>
+    <a class="nav-item active" href="#hero" data-nav>課程總覽</a>
+    <a class="nav-item" href="#hour1" data-nav>第1小時</a>
+    <a class="nav-item" href="#hour2" data-nav>第2小時</a>
+    <a class="nav-item" href="#hour3" data-nav>第3小時</a>
+    <a class="nav-item" href="#hour4" data-nav>第4小時</a>
+    <a class="nav-item" href="#hour5" data-nav>第5小時</a>
+    <a class="nav-item" href="#hour6" data-nav>第6小時</a>
+    <a class="nav-item" href="#tools" data-nav>AI 工具</a>
+    <a class="nav-item" href="#slides" data-nav>簡報</a>
+    <a class="nav-item" href="#teacher" data-nav>講師</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-badge">&#9733; 國泰人壽 AI 培訓課程</div>
+    <h1>AI 工具應用與<br><span class="hl">簡報製作課程</span></h1>
+    <p class="hero-sub">課後複習專用網站 — 6 小時精華 x 8 大 AI 工具 x 實戰操作全攻略</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">小時課程</span></div>
+      <div class="stat"><span class="stat-num">8</span><span class="stat-label">AI 工具</span></div>
+      <div class="stat"><span class="stat-num">30+</span><span class="stat-label">實戰情境</span></div>
+    </div>
+    <div class="hero-meta">
+      <span>&#128197; 2026 年 3 月 17 日</span>
+      <span>&#127970; 國泰人壽 業務主管班</span>
+      <span>&#127891; 講師：阿峰老師（黃敬峰）</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 第1小時 ==================== -->
+<section class="section" id="hour1">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge hour">HOUR 1</span>
+      <h2>AI 指令基礎 — 角色、情境、期望</h2>
+      <p class="section-desc">學會 AI 下指令的核心心法，讓 AI 從「能用」變「好用」</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#127919;</span> 核心教學重點</h3>
+      <ul>
+        <li>三大 AI 工具介紹：<strong class="green">ChatGPT</strong>、<strong class="green">Gemini</strong>（Google）、<strong class="green">Grok</strong>（馬斯克）</li>
+        <li>資安提醒：Gemini 較安全（Google 上市公司、台灣有分公司），注意釣魚廣告</li>
+        <li><strong>付費 vs 免費</strong>：會使用比付錢更重要。阿嬤用 iPhone 17 Pro Max 跟用 OPPO 手機沒差別</li>
+        <li>ChatGPT 中文資料只佔 0.7%，AI 有「一本正經胡說八道」的特色，務必確認資訊</li>
+        <li><strong class="gold">核心心法：角色、情境、期望（R-S-E）</strong></li>
+        <li><strong>角色</strong>：讓 AI 扮演比你還厲害的專家（如「40 年資深壽險顧問總監」）</li>
+        <li><strong>情境</strong>：把客戶背景、產品資料、場景講越清楚越好</li>
+        <li><strong>期望</strong>：要 AI 給你什麼格式（列點/表格/字數/難度）</li>
+        <li>實戰示範：上傳國泰美愛康寧保單 PDF，產出客製化保險文案</li>
+        <li>選育用留指令：面試、激勵新人、指派高難度任務等管理情境</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128161;</span> 金句摘錄</h3>
+      <div class="quote-card">「會使用比付錢更加重要。」</div>
+      <div class="quote-card">「角色就是讓 AI 扮演比你還厲害的角色，不要扮演自己。」</div>
+      <div class="quote-card">「AI 不是拿來找標準答案的。去日本玩有標準答案嗎？你跟客戶溝通有標準答案嗎？」</div>
+      <div class="quote-card">「AI 不只不會笑你，還給你滿滿的情緒支持。而且半夜三點你問他，他不會說你好吵。」</div>
+      <div class="quote-card">「業務暫時很難被 AI 取代，特別是你們越高單價越是如此。」</div>
+    </div>
+    <div class="card"><h3 class="collapsible" onclick="toggle(this)"><span class="icon">&#128736;</span> 操作步驟</h3><div class="collapse-body"><div class="steps"><div class="step">ChatGPT 語音輸入（麥克風功能）：支援中英台語混合辨識</div><div class="step">上傳 PDF 檔案給 Gemini，讓 AI 讀取保單內容後產出客製化文案</div><div class="step">ChatGPT 付費用戶切換到 Thinking 模型（比 Auto 更好）</div><div class="step">不同主題開新聊天室，不要把 AI 當 Google 用</div><div class="step">聊天室左側重新命名，可按客戶分類管理</div></div></div></div>
+    <div class="card"><h3 class="collapsible" onclick="toggle(this)"><span class="icon">&#10067;</span> Q&A</h3><div class="collapse-body"><ul><li><strong>Q：角色可以設定多個嗎？</strong><br>A：可以，例如同時扮演經濟學大師、投資大師、通訊處經理三個角色，讓他們彼此辯論</li><li><strong>Q：上傳客戶資料給 AI 安全嗎？</strong><br>A：記得把客戶的個資刪掉，不要洩露隱私</li></ul></div></div>
+  </div>
+</section>
+
+<!-- ==================== 第2小時 ==================== -->
+<section class="section" id="hour2">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge hour">HOUR 2</span>
+      <h2>Perplexity 搜尋 AI + 會議記錄小幫手</h2>
+      <p class="section-desc">有來源的 AI 搜尋 + 錄音一鍵變逐字稿</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128269;</span> Perplexity（小 P）找資料</h3>
+      <ul>
+        <li>與 ChatGPT/Gemini 的關鍵差異：<strong class="gold">Perplexity 有資料來源</strong>，其他 AI 不告訴你資料從哪來</li>
+        <li>實戰：用 Perplexity 比較國泰美愛康寧 vs 富邦美麗人生（保費、利率、保障），以表格呈現</li>
+        <li><strong class="green">財務功能</strong>：查任何美國上市公司的股價、損益表、資產負債表、現金流量表</li>
+        <li>可查 Nancy Pelosi 等人投資了哪些公司</li>
+        <li>法說會逐字稿和錄音檔都可以下載，丟給 NotebookLM 做翻譯分析</li>
+        <li>使用場景：查公司背景、查最新稅務法規、查基金績效、查保險法規</li>
+        <li>台灣大哥大 599 以上方案送一年 Perplexity Pro</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#127908;</span> 會議記錄小幫手</h3>
+      <ul>
+        <li>免費使用，單檔最多 2 小時；付費 199/月</li>
+        <li>一小時的錄音約 5 分鐘轉完，產出：摘要 + 逐字稿 + SRT 字幕檔</li>
+        <li>搭配 <strong class="green">Gemini Canvas</strong>：右側面板可直接編輯、圈選文字修改、轉表格</li>
+        <li>可一鍵匯出 Google 文件，自動排版加目錄</li>
+        <li>延伸用法：上課錄音 → 逐字稿 → 丟給 AI 寫心得文章/臉書貼文/內部通知</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128161;</span> 金句摘錄</h3>
+      <div class="quote-card">「我有時候的重點不是要得到答案，我是要得到資料的來源。」</div>
+      <div class="quote-card">「以前投資的人靠明牌、聽別人講，但你現在有了 AI 之後，擁有第一手數據。」</div>
+      <div class="quote-card">「知用作管 — 先知道有哪些 AI 工具，然後開始用，接下來做 AI，最後管 AI。」</div>
+      <div class="quote-card">「公司以前 15 個同事，我現在沒有同事就我一個人。」</div>
+    </div>
+    <div class="card"><h3 class="collapsible" onclick="toggle(this)"><span class="icon">&#128736;</span> 操作步驟</h3><div class="collapse-body"><div class="steps"><div class="step">開啟 Perplexity → 新主題 → 上傳保單 PDF 或輸入關鍵字搜尋</div><div class="step">Perplexity 左側選「財務」→ 搜尋美股公司 → 查看股價、財報、持有者</div><div class="step">會議記錄小幫手：登入 Google 帳號 → 上傳錄音檔 → 等待約 5 分鐘</div><div class="step">轉換後查看摘要 + 逐字稿 → 下載逐字稿 → 丟給 Gemini</div><div class="step">Gemini 開啟 Canvas → 下指令 → AI 在右側面板生成可編輯內容</div><div class="step">匯出 Google 文件：按「分享到 Google 文件」按鈕</div></div></div></div>
+    <div class="card"><h3 class="collapsible" onclick="toggle(this)"><span class="icon">&#10067;</span> Q&A</h3><div class="collapse-body"><ul><li><strong>Q：要用哪個 AI 最好？</strong><br>A：找創意/策略/想法 → ChatGPT 和 Gemini；找確定答案/有來源 → Perplexity</li><li><strong>Q：錄音品質不好怎麼辦？</strong><br>A：錄音品質是物理性的，AI 沒辦法處理。建議把錄音筆放在喇叭旁邊收音</li></ul></div></div>
+  </div>
+</section>
+
+<!-- ==================== 第3小時 ==================== -->
+<section class="section" id="hour3">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge hour">HOUR 3</span>
+      <h2>Manus 做簡報</h2>
+      <p class="section-desc">AI 特助幫你做簡報，30 元搞定一份專業簡報</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128196;</span> Manus 核心教學</h3>
+      <ul>
+        <li><strong class="green">Manus</strong> = AI 特助，會開虛擬電腦幫你做事</li>
+        <li>計費方式：扣點數制，<strong class="gold">7 點 = 1 元台幣</strong>，一份簡報約 20-30 元</li>
+        <li>每天送 300 點免費額度，免費最多 12 頁</li>
+        <li>實戰：上傳逐字稿 → 指定國泰人壽風格 → Manus 自動查官網抓品牌色 → 生成簡報</li>
+        <li>修改超方便：刪除元素後自動重新排版</li>
+        <li>下載格式：PPT / PDF / Google Slides 都可以直接修改</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128640;</span> Manus 進階功能</h3>
+      <ul>
+        <li>可給帳號密碼，請它幫你 PO 臉書/IG 文章</li>
+        <li>可通過人類驗證（reCAPTCHA）</li>
+        <li>可做深度背景調查（查公司股東結構、中國資金、關鍵人員）</li>
+        <li>可做 B2B 潛在客戶搜尋（找國外代理商，含地址、電話、Email）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128161;</span> 金句摘錄</h3>
+      <div class="quote-card">「298 點，40 塊台幣，你要叫誰幫你做簡報？40 塊你只能買 2 罐養樂多。」</div>
+      <div class="quote-card">「人類不是想要用 Canva，人類是想要漂亮的簡報。」</div>
+      <div class="quote-card">「不要只用一個 AI，你要把它串在一起 — 錄音 → 逐字稿 → 重點摘要 → 簡報。」</div>
+    </div>
+    <div class="card"><h3 class="collapsible" onclick="toggle(this)"><span class="icon">&#128736;</span> 操作步驟</h3><div class="collapse-body"><div class="steps"><div class="step">進入 Manus → 按「製作簡報」</div><div class="step">上傳檔案（逐字稿或其他文件）</div><div class="step">輸入指令（例：「我是國泰人壽的主管，請用國泰人壽的風格製作簡報」）</div><div class="step">選擇頁數（免費最多 12 頁），等待約 5-10 分鐘</div><div class="step">在線上直接編輯：刪除元素自動排版、修改文字</div><div class="step">下載：PPT / PDF / Google Slides</div></div></div></div>
+  </div>
+</section>
+
+<!-- ==================== 第4小時 ==================== -->
+<section class="section" id="hour4">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge hour">HOUR 4</span>
+      <h2>Gemini Canvas 做簡報 + AI 工作流</h2>
+      <p class="section-desc">免費無限做簡報 + AI 串接工作流思維</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#9889;</span> AI 四階段發展</h3>
+      <ul>
+        <li><strong class="green">第一階段：知用</strong> — 知道有哪些 AI 工具</li>
+        <li><strong class="green">第二階段：會用</strong> — 熟練操作各工具</li>
+        <li><strong class="gold">第三階段：串流</strong> — 把多個 AI 工具串接成工作流</li>
+        <li><strong class="gold">第四階段：自動化</strong> — AI 自動幫你發文、做影片</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128196;</span> Gemini Canvas 做簡報</h3>
+      <ul>
+        <li>一定要按「<strong class="gold">工具 → Canvas</strong>」，否則無法生成簡報</li>
+        <li>指令關鍵字：「請製作成 Google Slide 格式，並且是可以下載的那種」</li>
+        <li><strong class="green">完全免費</strong>，一天做 100 份都可以</li>
+        <li>生成後按「匯出成簡報」→ 自動上傳到 Google 雲端 → 可下載 PPT</li>
+        <li>Gemini vs Manus：Gemini 免費效果普通；Manus 扣點但效果好可修改</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128161;</span> 金句摘錄</h3>
+      <div class="quote-card">「你是機長，AI 是機組人員。」</div>
+      <div class="quote-card">「重點不是是不是 AI 做出來的，重點是你有沒有對這份簡報負責任。」</div>
+      <div class="quote-card">「Gemini 是吃到飽，Manus 是扣點數的特助。」</div>
+      <div class="quote-card">「業務不容易被 AI 取代，因為 AI 沒辦法負責任。」</div>
+    </div>
+    <div class="card"><h3 class="collapsible" onclick="toggle(this)"><span class="icon">&#128736;</span> 操作步驟</h3><div class="collapse-body"><div class="steps"><div class="step">進入 Gemini → 按「工具」→ 選 Canvas</div><div class="step">上傳資料 + 下指令（必須寫「Google Slide 格式，可以下載的那種」）</div><div class="step">等「正在製作投影片」出現 → 等待生成完成</div><div class="step">按「匯出成簡報」→ 到 Google 雲端下載 PPT</div></div></div></div>
+  </div>
+</section>
+
+<!-- ==================== 第5小時 ==================== -->
+<section class="section" id="hour5">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge hour">HOUR 5</span>
+      <h2>NotebookLM 深度教學</h2>
+      <p class="section-desc">Google 最強知識庫 AI — 只讀你的資料，絕不瞎掰</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128218;</span> NotebookLM 基礎</h3>
+      <ul>
+        <li>Google 產品，免費版可放 50 筆資料</li>
+        <li>可上傳：PDF、Word、Google 雲端、網址、YouTube 連結</li>
+        <li>上傳後一定要點開檢查資料是否正確讀取</li>
+        <li>Excel 不能直接上傳，需轉成 PDF 或放到 Google 雲端</li>
+        <li><strong class="gold">最大特色：只讀你給的資料，不會瞎掰</strong></li>
+        <li>每個答案都標註資料來源（Reference check）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128302;</span> 九大功能按鈕</h3>
+      <ul>
+        <li><strong class="green">心智圖</strong>：可點開分支進一步詢問 AI</li>
+        <li><strong class="green">學習卡</strong>：正面題目、背面答案，不會按「說明」AI 解釋</li>
+        <li><strong class="green">資訊圖表</strong>：做成 DM 概念的圖文</li>
+        <li><strong class="green">資料表</strong>：Excel 概念，可匯出成 Excel</li>
+        <li><strong class="green">簡報</strong>：按一個按鈕自動生成（約 10 分鐘）</li>
+        <li><strong class="green">語音摘要</strong>：自動生成 Podcast（有情緒的 AI 對話）</li>
+        <li><strong class="green">影片摘要</strong>：YouTube 影片變精華懶人包</li>
+        <li><strong class="green">報告</strong>：生成書面報告</li>
+        <li><strong class="green">測驗</strong>：自動出題，可客製化難度</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#127919;</span> 實用情境（壽險業務）</h3>
+      <ul>
+        <li class="gold-dot"><strong>拜訪高資產客戶</strong>：上傳儲蓄險 DM + 客戶公司年報 → AI 分析切入點</li>
+        <li class="gold-dot"><strong>退休缺口計算</strong>：上傳年金險條款 PDF + 勞保局試算表</li>
+        <li class="gold-dot"><strong>團隊招募面試</strong>：上傳面試者資料 → AI 分析誰比較適合</li>
+        <li class="gold-dot"><strong>教育訓練</strong>：上傳培訓教材 → 用學習卡、測驗功能訓練團隊</li>
+        <li class="gold-dot"><strong>客戶管理</strong>：一個筆記本 = 一個客戶（LINE 對話、Email、提案全丟進去）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128161;</span> 金句摘錄</h3>
+      <div class="quote-card">「AI 叫千人千面 — 你答錯了，AI 會針對你個人解釋為什麼答錯。」</div>
+      <div class="quote-card">「如果跟我說資料是錯的，只有一種可能：你的資料有問題。」</div>
+      <div class="quote-card">「這是 Google 跟 ChatGPT 最大的分水嶺 — ChatGPT 再厲害目前都不能幹這件事。」</div>
+      <div class="quote-card">「不要替 AI 煩惱 — 九個按鈕全部都按一遍，又不是你在跑。」</div>
+    </div>
+    <div class="card"><h3 class="collapsible" onclick="toggle(this)"><span class="icon">&#128736;</span> 操作步驟</h3><div class="collapse-body"><div class="steps"><div class="step">進入 NotebookLM → 建立新筆記本 → 上傳資料</div><div class="step">點開每個資料源，滑一下確認內容正確讀取</div><div class="step">右側找九個功能按鈕 → 點筆型圖示設定客製化（對象、風格、語言）</div><div class="step">按生成 → 等待結果（簡報約 10 分鐘）</div><div class="step">YouTube 連結失敗時：用 YouTube to MP3 下載音檔再上傳</div></div></div></div>
+  </div>
+</section>
+
+<!-- ==================== 第6小時 ==================== -->
+<section class="section" id="hour6">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge hour">HOUR 6</span>
+      <h2>AI 做圖片素材 + 課程總結</h2>
+      <p class="section-desc">用 AI 生成專業社群圖片、動畫賀卡，六小時精華回顧</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#127912;</span> Gemini 做圖片</h3>
+      <ul>
+        <li>在 Gemini 按「工具 → 建立圖像」即可使用</li>
+        <li>兩種模式：<strong class="green">快捷</strong>（免費）/ <strong class="gold">Pro</strong>（效果好，每天有限額度）</li>
+        <li><strong>無中生有</strong>：描述你要的圖（母親節卡片、保險 DM）</li>
+        <li><strong>改造模式</strong>：上傳照片 → 加墨鏡、換背景、換 Pose、加文字、合成</li>
+        <li>可指定尺寸：1:1、9:16（直式）、16:9（橫式）、3:4、4:3</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128293;</span> JSON 格式大法（圖片風格學習）</h3>
+      <ul>
+        <li>在 Pinterest 找到喜歡的圖片風格</li>
+        <li>丟給 AI 說「請給我這張圖片的 JSON 格式」</li>
+        <li>AI 輸出結構化描述 → 修改內容（換人物、品牌、場景）→ 重新生成</li>
+        <li>可用這個方法批量產出同風格不同內容的圖片</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#127916;</span> Grok 做動畫</h3>
+      <ul>
+        <li>按 Image → 上傳圖片 → 選「影片」→ 下指令（唱歌、跳舞、跌倒等）</li>
+        <li>免費 6 秒動畫，一天可做十幾個</li>
+        <li>適合做動態賀卡（中秋節、聖誕節、生日祝福）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128161;</span> 金句摘錄</h3>
+      <div class="quote-card">「AI 的邊界是什麼？是你的創意力跟執行力。」</div>
+      <div class="quote-card">「學 AI 之後，勞力會變輕鬆，但腦力會變累。」</div>
+      <div class="quote-card">「以後業務員最大的重點是：花很多時間了解你的客戶。因為企劃、行銷、圖片都不用你幹了。」</div>
+      <div class="quote-card">「今天上課最主要的目的，不是知識的重量，是課後行動的力量。」</div>
+      <div class="quote-card">「問對問題就得到對的答案。你們今天都不是在生產東西，你們都在提問。」</div>
+    </div>
+    <div class="card">
+      <h3><span class="icon">&#128218;</span> 六小時課程總複習</h3>
+      <ul>
+        <li><strong class="green">LLM 大型語言模型</strong>：ChatGPT、Gemini、Grok（不確定的要確認）</li>
+        <li><strong class="green">下指令三要素</strong>：角色、情境、期望</li>
+        <li><strong class="green">找資料</strong>：Perplexity（有來源比較安全）</li>
+        <li><strong class="green">做簡報三工具</strong>：Gemini（免費）、Manus（扣點）、NotebookLM（最華麗）</li>
+        <li><strong class="green">NotebookLM</strong>：不會瞎掰、做教育訓練、客戶管理</li>
+        <li><strong class="green">做圖片</strong>：Gemini 圖片生成</li>
+        <li><strong class="green">做動畫</strong>：Grok</li>
+      </ul>
+    </div>
+    <div class="card"><h3 class="collapsible" onclick="toggle(this)"><span class="icon">&#10067;</span> Q&A</h3><div class="collapse-body"><ul><li><strong>Q：可不可以用鬼滅之刃、七龍珠風格？</strong><br>A：可以，但傳出去可能有版權問題，要小心</li><li><strong>Q：QR Code 可以 AI 做嗎？</strong><br>A：AI 會畫出長得像 QR Code 的圖但掃不了。做好圖後自己貼上真的 QR Code</li><li><strong>Q：DeepSeek 要不要用？</strong><br>A：企業課不建議（資料安全問題）</li><li><strong>Q：NotebookLM 付費值得嗎？</strong><br>A：Google One 一個月幾百塊，包含 2TB 雲端 + Gemini 付費 + NotebookLM 付費，很划算</li></ul></div></div>
+  </div>
+</section>
+
+<!-- ==================== AI 工具快速連結 ==================== -->
+<section class="section" id="tools">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge tools">TOOLS</span>
+      <h2>AI 工具快速連結</h2>
+      <p class="section-desc">課程中教到的所有 AI 工具，點擊直接開啟</p>
+    </div>
+    <div class="tool-grid">
+      <a class="tool-card" href="https://chatgpt.com" target="_blank" rel="noopener"><span class="tool-icon">&#129302;</span><span class="tool-name">ChatGPT</span><span class="tool-desc">AI 對話、創意發想、指令實戰</span><span class="tool-tag">免費 / 付費</span></a>
+      <a class="tool-card" href="https://gemini.google.com" target="_blank" rel="noopener"><span class="tool-icon">&#10024;</span><span class="tool-name">Gemini</span><span class="tool-desc">Google AI｜Canvas 簡報 / 圖片生成</span><span class="tool-tag">免費 / 付費</span></a>
+      <a class="tool-card" href="https://www.perplexity.ai" target="_blank" rel="noopener"><span class="tool-icon">&#128270;</span><span class="tool-name">Perplexity</span><span class="tool-desc">有來源的 AI 搜尋｜財務數據</span><span class="tool-tag">免費 / 付費</span></a>
+      <a class="tool-card" href="https://notebooklm.google.com" target="_blank" rel="noopener"><span class="tool-icon">&#128218;</span><span class="tool-name">NotebookLM</span><span class="tool-desc">知識庫 AI｜九大功能｜不瞎掰</span><span class="tool-tag">免費</span></a>
+      <a class="tool-card" href="https://manus.im" target="_blank" rel="noopener"><span class="tool-icon">&#128187;</span><span class="tool-name">Manus</span><span class="tool-desc">AI 特助｜做簡報｜深度調查</span><span class="tool-tag paid">扣點制</span></a>
+      <a class="tool-card" href="https://grok.com" target="_blank" rel="noopener"><span class="tool-icon">&#127916;</span><span class="tool-name">Grok</span><span class="tool-desc">馬斯克 AI｜圖片動畫生成</span><span class="tool-tag">免費</span></a>
+      <a class="tool-card" href="https://v2.chateverywhere.app/zh/meeting-transcription" target="_blank" rel="noopener"><span class="tool-icon">&#127908;</span><span class="tool-name">會議記錄小幫手</span><span class="tool-desc">錄音轉逐字稿｜免費 2 小時</span><span class="tool-tag">免費 / 付費</span></a>
+      <a class="tool-card" href="https://claude.ai" target="_blank" rel="noopener"><span class="tool-icon">&#128172;</span><span class="tool-name">Claude AI</span><span class="tool-desc">Anthropic 的 AI 助手</span><span class="tool-tag">免費 / 付費</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 簡報 ==================== -->
+<section class="section" id="slides">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge tools">SLIDES</span>
+      <h2>課程簡報</h2>
+      <p class="section-desc">課程使用的簡報檔案</p>
+    </div>
+    <div class="slide-embed">
+      <div class="placeholder">&#128196; 簡報連結準備中，請稍候更新<br><span style="font-size:12px;color:var(--text-light);margin-top:8px;display:block;">提示：老師會在 LINE 群組中分享簡報連結</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 講師 ==================== -->
+<section class="section" id="teacher">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge teacher">INSTRUCTOR</span>
+      <h2>關於阿峰老師</h2>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar">
+        <div class="avatar-circle">&#23792;</div>
+        <div class="name">黃敬峰</div>
+        <div class="title">AI峰哥 / 阿峰老師</div>
+      </div>
+      <div class="teacher-info">
+        <h3>企業 AI 實戰培訓專家</h3>
+        <p>台灣領先的企業 AI 實戰培訓專家，擁有超過 10 年企業培訓經驗。自生成式 AI 元年（2022）起，深入研究 ChatGPT、Claude、Gemini 等前沿工具，擅長將技術轉化為企業可落地的實戰方案。</p>
+        <p>教學心法：<strong class="gold">「會用、懂用、好用、每天用」</strong><br>品牌金句：<strong class="green">「你是機長，AI 是機組人員」</strong></p>
+        <div class="teacher-stats">
+          <div class="teacher-stat"><span class="num">400+</span><span class="label">企業合作</span></div>
+          <div class="teacher-stat"><span class="num">300+</span><span class="label">場次課程</span></div>
+          <div class="teacher-stat"><span class="num">10,000+</span><span class="label">學員人次</span></div>
+        </div>
+        <p style="font-size:13px;color:var(--text-light);">服務客戶含：華碩、精誠資訊、蝦皮、國泰人壽、南山人壽、華南銀行、裕隆日產、台灣理光、三菱商事、行政院數位發展部等 400+ 企業機關</p>
+        <div class="teacher-links">
+          <a class="teacher-link" href="https://www.autolab.cloud" target="_blank">&#127760; 官方網站</a>
+          <a class="teacher-link" href="https://blog.autolab.cloud" target="_blank">&#128221; 部落格</a>
+          <a class="teacher-link" href="mailto:ai@autolab.cloud">&#9993; ai@autolab.cloud</a>
+          <a class="teacher-link" href="https://reurl.cc/GGlLNx" target="_blank">&#128172; LINE 社群</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>讓 AI 成為你的超級業務夥伴</h2>
+  <p>今天上課最主要的目的，不是知識的重量，是課後行動的力量。<br>現在就開始把學到的 AI 工具用在你的工作中！</p>
+  <div>
+    <a class="cta-btn" href="https://reurl.cc/GGlLNx" target="_blank">加入 AI 學習社群</a>
+    <a class="cta-btn secondary" href="https://www.autolab.cloud" target="_blank">了解更多課程</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>Autolab &copy; 2026 | 企業 AI 實戰培訓專家 — 阿峰老師</p>
+  <p style="margin-top:6px;"><a href="https://www.autolab.cloud">www.autolab.cloud</a> · <a href="mailto:ai@autolab.cloud">ai@autolab.cloud</a> · 0976-715-102</p>
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+function toggle(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
+const navItems=document.querySelectorAll('[data-nav]');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navItems.forEach(n=>{n.classList.toggle('active',n.getAttribute('href')==='#'+id);});}});},{threshold:0.15,rootMargin:'-72px 0px -50% 0px'});
+document.querySelectorAll('.section,.hero,.cta').forEach(s=>{if(s.id)observer.observe(s);});
+window.addEventListener('scroll',()=>{document.getElementById('backTop').classList.toggle('visible',window.scrollY>500);});
+navItems.forEach(item=>{item.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(item.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
+</script>
+</body>
+</html>
