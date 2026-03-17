@@ -101,7 +101,8 @@ a:hover{color:var(--green-light);}
 /* === Teacher === */
 .teacher-card{display:grid;grid-template-columns:1fr 2fr;gap:32px;background:var(--bg-card);border-radius:14px;border:1px solid var(--border);padding:32px;align-items:start;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
 .teacher-avatar{text-align:center;}
-.teacher-avatar .avatar-circle{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-light));display:flex;align-items:center;justify-content:center;font-size:48px;margin:0 auto 12px;color:#fff;font-weight:900;}
+.teacher-avatar .avatar-circle{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-light));display:flex;align-items:center;justify-content:center;font-size:48px;margin:0 auto 12px;color:#fff;font-weight:900;overflow:hidden;}
+.teacher-avatar .avatar-circle img{width:100%;height:100%;object-fit:cover;}
 .teacher-avatar .name{font-size:20px;font-weight:700;color:var(--text);}
 .teacher-avatar .title{font-size:13px;color:var(--text-light);margin-top:4px;}
 .teacher-info h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:12px;}
@@ -165,6 +166,7 @@ a:hover{color:var(--green-light);}
     <a class="nav-item" href="#hour5" data-nav>第5小時</a>
     <a class="nav-item" href="#hour6" data-nav>第6小時</a>
     <a class="nav-item" href="#tools" data-nav>AI 工具</a>
+    <a class="nav-item" href="#video" data-nav>影片</a>
     <a class="nav-item" href="#slides" data-nav>簡報</a>
     <a class="nav-item" href="#teacher" data-nav>講師</a>
   </div>
@@ -477,6 +479,20 @@ a:hover{color:var(--green-light);}
   </div>
 </section>
 
+<!-- ==================== 課程影片 ==================== -->
+<section class="section" id="video">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge tools">VIDEO</span>
+      <h2>課程全程影片</h2>
+      <p class="section-desc">回顧完整 6 小時課程內容</p>
+    </div>
+    <div class="slide-embed">
+      <iframe src="https://www.youtube.com/embed/hLb4lzQVG6I" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
 <!-- ==================== 簡報 ==================== -->
 <section class="section" id="slides">
   <div class="container">
@@ -486,8 +502,9 @@ a:hover{color:var(--green-light);}
       <p class="section-desc">課程使用的簡報檔案</p>
     </div>
     <div class="slide-embed">
-      <div class="placeholder">&#128196; 簡報連結準備中，請稍候更新<br><span style="font-size:12px;color:var(--text-light);margin-top:8px;display:block;">提示：老師會在 LINE 群組中分享簡報連結</span></div>
+      <iframe src="https://docs.google.com/presentation/d/1arvRa7zpBK6i6erHjA43_Ay8E7lf6tCcusy1CyLyr1g/embed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
     </div>
+    <p style="text-align:center;margin-top:12px;font-size:13px;color:var(--text-light);"><a href="https://docs.google.com/presentation/d/1arvRa7zpBK6i6erHjA43_Ay8E7lf6tCcusy1CyLyr1g/edit" target="_blank" style="color:var(--green);">在 Google Slides 中開啟完整簡報 &rarr;</a></p>
   </div>
 </section>
 
@@ -500,7 +517,7 @@ a:hover{color:var(--green-light);}
     </div>
     <div class="teacher-card">
       <div class="teacher-avatar">
-        <div class="avatar-circle">&#23792;</div>
+        <div class="avatar-circle"><img src="instructor.jpg" alt="阿峰老師"></div>
         <div class="name">黃敬峰</div>
         <div class="title">AI峰哥 / 阿峰老師</div>
       </div>
